@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
+
+    <head>
+        {%load static%}
+    </head>
+
+    <body>
+        <header>
+            <div class="start" id=start>
+                <h1 class="start-header">Hamid Ibragimov</h1>
+                <!-- <p>Portfolio</p> -->
+                <div class="btn">
+                    <a href="/#proj">See Projects</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+
+            <div class="lang-wrapper" id=lang>
+                <div class="lang-header">
+                    <h1 class="header1">Python Focused</h1>
+                </div>
+                <div class="lang-technologies">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus ante risus, ac luctus metus varius id. 
+                        Proin vel blandit leo, et lacinia nulla. Fusce vestibulum ligula nec aliquam suscipit. 
+                        Nullam cursus pellentesque quam, eget feugiat neque tempor a. Pellentesque quis eros ut ipsum luctus commodo. 
+                        Morbi at ante vitae est tincidunt vehicula et ut ex. Morbi risus nisi, consectetur vel ante sed, congue iaculis nulla. 
+                        Vivamus in felis hendrerit, bibendum mauris sagittis, finibus augue. Aenean tincidunt massa at sem laoreet posuere. 
+                        Etiam in imperdiet dui, vel tristique magna. Aenean sed blandit arcu. Integer vitae tempor mauris.
+                    </p>
+                    <img id="django-logo" src="{% static 'images/django-logo.png' %}" alt="tech">
+                    <img id="pygame-logo" src="{% static 'images/pygame-logo.png' %}" alt="tech">
+                    <img id="selenium-logo" src="{% static 'images/selenium-logo.png' %}" alt="tech">
+                </div>
+            </div>
+
+            <div class="proj-wrapper">
+                <div id="proj">
+                    <h1 class="proj-header">My Projects</h1>
+                </div>
+                {% for instance in object_list %}
+                <div class="cards">
+                    <div class="card-inner">
+                        <div class="card-face card-face-front">
+                            <img src="{% static instance.image.url %}" alt="Avatar">
+                            <div class="card-name">
+                                <h2>{{instance.name}}</h2>
+                            </div>
+                        </div>
+                        <div class="card-face card-face-back">
+                            <div class="card-content">
+                                <div class="card-header">
+                                    <h4>{{instance.language}}</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p class="p-text">{{instance.description}}</p>
+                                    <div class="btn">
+                                        <a data-modal-target="#{{instance.name}}">More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </main>
+
+
+    </body>
+</html>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<head>
+    <title>{{obj.name}}</title>
+</head>
+{% endblock %}
+
+<body>
+{% block content %}
+
+<main>
+<p class="p-text">
+    <h2 class="header2">{{obj.name}}</h2>
+    Programming Language - {{obj.language}}
+    <h3 class="header2">Description</h3>
+    {{obj.description}}
+</p>
+</main>
+
+</body>
+{% endblock %}

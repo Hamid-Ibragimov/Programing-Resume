@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% block title %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hamid's Resume Website</title>
+        {% endblock %}
+
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+        <link rel="stylesheet" type="text/css" href="{%static 'css/all.min.css'%}">
+        <link rel="shortcut icon" type="image/png" href="{%static 'images/favicon.png'%}">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div>
+            <header>
+                {% include 'navbar.html' %}
+            </header>
+
+            <main class="wrapper" style="clear: both;">
+
+                {% block content %}
+                replace
+                {% endblock %}
+            </main>
+
+            <footer>
+            </footer>
+        </div>
+        
+
+        {% for instance in object_list %}
+        <div class="modal" id="{{instance.name}}">
+            <div class="modal-header">
+                <h2>{{instance.name}}</h2>
+                <button data-close-button>&times;</button>
+            </div>
+
+            <div class="modal-grid">
+
+                        
+
+
+
+                <video src="{% static instance.popup_media.url %}" controls loop></video>
+
+                
+        
+                <!-- <video src="{% static instance.file %}" alt="test-background"> -->
+                <p>
+                    {{instance.description}}
+                </p>       
+                <div class="btn">
+                    <div class="btn-modal">
+                        <a href="{{instance.popup_source_link}}" target="_blank">Source Code</a>
+                    </div>
+                </div>           
+            </div>
+        </div>
+        {% endfor %}
+
+        <div id="overlay"></div>
+
+
+
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    </body>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+
+</html>
